@@ -34,8 +34,6 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
      */
     public function getData()
     {
-
-        
         $items = $this->collection->getItems();
 
         // \Magento\Framework\App\ObjectManager::getInstance()
