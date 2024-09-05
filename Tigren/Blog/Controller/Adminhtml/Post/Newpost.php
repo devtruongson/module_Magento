@@ -18,7 +18,7 @@ class Newpost extends \Magento\Backend\App\Action
 	public function execute()
 	{
 		$resultPage = $this->resultPageFactory->create();
-		$id = $this->getRequest()->getParam('id');
+		$id = $this->getRequest()->getParam('post_id');
 
 		if(!isset($id)){
 			$resultPage->getConfig()->getTitle()->prepend((__('Add New Post')));

@@ -1,6 +1,7 @@
 <?php
-namespace Tigren\Blog\Model\Blog;
-class Post extends \Magento\Framework\Model\AbstractModel
+namespace Tigren\Blog\Model\Cate;
+
+class Cate extends \Magento\Framework\Model\AbstractModel
 {
 	protected function _construct()
 	{

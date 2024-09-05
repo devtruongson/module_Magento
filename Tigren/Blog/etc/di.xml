@@ -1,22 +1,45 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
-    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
-        <arguments>
-            <argument name="collections" xsi:type="array">
-            	<!-- Data Source will be mentioned in listing xml -->
-                <item name="tigrenblog_listing_data_source" xsi:type="string">Tigren\Blog\Model\Blog\ResourceModel\Post\Grid\Collection</item>
-            </argument>
-            <argument name="collections" xsi:type="array">
-            	<!-- Data Source will be mentioned in listing xml -->
-                <item name="tigrencate_listing_data_source" xsi:type="string">Tigren\Blog\Model\Cate\ResourceModel\Cate\Grid\Collection</item>
-            </argument>
-        </arguments>
-    </type>
-    <virtualType name="Tigren\Blog\Model\Blog\ResourceModel\Post\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
-        <arguments>
-        	<!-- Table name to insert data and listing data -->
-            <argument name="mainTable" xsi:type="string">tigren_blog_post</argument>
-            <!-- Resource model name -->
-            <argument name="resourceModel" xsi:type="string">Tigren\Blog\Model\Blog\ResourceModel\Post</argument>
-        </arguments>
-    </virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<!-- Data Source for Blog Post Listing -->
+				<item name="tigrenblog_listing_data_source" xsi:type="string">
+					Tigren\Blog\Model\Blog\ResourceModel\Post\Grid\Collection
+				</item>
+				<!-- Data Source for Blog Category Listing -->
+				<item name="tigrencate_listing_data_source" xsi:type="string">
+					Tigren\Blog\Model\Cate\ResourceModel\Cate\Grid\Collection
+				</item>
+				<item name="category_data_source" xsi:type="object">
+					Tigren\Blog\Model\Cate\DataProvider
+				</item>
+			</argument>
+		</arguments>
+	</type>
+	<!-- Definition for Blog Post Grid Collection -->
+	<virtualType name="Tigren\Blog\Model\Blog\ResourceModel\Post\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<!-- Table name for Blog Post -->
+			<argument name="mainTable" xsi:type="string">
+				tigren_blog_post
+			</argument>
+			<!-- Resource model name for Blog Post -->
+			<argument name="resourceModel" xsi:type="string">
+				Tigren\Blog\Model\Blog\ResourceModel\Post
+			</argument>
+		</arguments>
+	</virtualType>
+	<!-- Definition for Blog Category Grid Collection -->
+	<virtualType name="Tigren\Blog\Model\Cate\ResourceModel\Cate\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<!-- Table name for Blog Category -->
+			<argument name="mainTable" xsi:type="string">
+				tigren_blog_cate
+			</argument>
+			<!-- Resource model name for Blog Category -->
+			<argument name="resourceModel" xsi:type="string">
+				Tigren\Blog\Model\Cate\ResourceModel\Cate
+			</argument>
+		</arguments>
+	</virtualType>
 </config>

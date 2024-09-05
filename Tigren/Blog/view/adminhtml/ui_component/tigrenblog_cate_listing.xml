@@ -3,10 +3,10 @@
 	<argument name="data" xsi:type="array">
 		<item name="js_config" xsi:type="array">
 			<item name="provider" xsi:type="string">
-				tigrenblog_post_listing.tigrenblog_listing_data_source
+				tigrenblog_cate_listing.tigrencate_listing_data_source
 			</item>
 			<item name="deps" xsi:type="string">
-				tigrenblog_post_listing.tigrenblog_listing_data_source
+				tigrenblog_cate_listing.tigrencate_listing_data_source
 			</item>
 		</item>
 		<item name="spinner" xsi:type="string">
@@ -18,30 +18,30 @@
 					add
 				</item>
 				<item name="label" xsi:type="string" translate="true">
-					Add New Post
+					Add New Cate
 				</item>
 				<item name="class" xsi:type="string">
 					primary
 				</item>
 				<item name="url" xsi:type="string">
-					tigrenblog/post/newpost
+					tigrenblog/cate/newcate
 				</item>
 			</item>
 		</item>
 	</argument>
-	<dataSource name="tigrenblog_listing_data_source">
+	<dataSource name="tigrencate_listing_data_source">
 		<argument name="dataProvider" xsi:type="configurableObject">
 			<argument name="class" xsi:type="string">
 				Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider
 			</argument>
 			<argument name="name" xsi:type="string">
-				tigrenblog_listing_data_source
+				tigrencate_listing_data_source
 			</argument>
 			<argument name="primaryFieldName" xsi:type="string">
-				post_id
+				category_id
 			</argument>
 			<argument name="requestFieldName" xsi:type="string">
-				post_id
+				category_id
 			</argument>
 			<argument name="data" xsi:type="array">
 				<item name="config" xsi:type="array">
@@ -51,7 +51,7 @@
 					<item name="update_url" xsi:type="url" path="mui/index/render" />
 					<item name="storageConfig" xsi:type="array">
 						<item name="indexField" xsi:type="string">
-							post_id
+							category_id
 						</item>
 					</item>
 				</item>
@@ -71,54 +71,9 @@
 		<filterSearch name="fulltext" />
 		<paging name="listing_paging" />
 		<exportButton name="export_button" />
-		<massaction name="listing_massaction">
-			<argument name="data" xsi:type="array">
-				<item name="config" xsi:type="array">
-					<item name="component" xsi:type="string">
-						Magento_Ui/js/grid/tree-massactions
-					</item>
-				</item>
-			</argument>
-			<action name="delete">
-				<argument name="data" xsi:type="array">
-					<item name="config" xsi:type="array">
-						<item name="type" xsi:type="string">
-							delete
-						</item>
-						<item name="label" xsi:type="string" translate="true">
-							Delete
-						</item>
-						<item name="url" xsi:type="url" path="tigrenblog/post/massDelete" />
-						<item name="confirm" xsi:type="array">
-							<item name="title" xsi:type="string" translate="true">
-								Delete Post
-							</item>
-							<item name="message" xsi:type="string" translate="true">
-								Are you sure you want to delete selected items?
-							</item>
-						</item>
-					</item>
-				</argument>
-			</action>
-		</massaction>
 	</listingToolbar>
 	<columns name="spinner_columns">
-		<selectionsColumn name="ids">
-			<argument name="data" xsi:type="array">
-				<item name="config" xsi:type="array">
-					<item name="resizeEnabled" xsi:type="boolean">
-						false
-					</item>
-					<item name="resizeDefaultWidth" xsi:type="string">
-						55
-					</item>
-					<item name="indexField" xsi:type="string">
-						post_id
-					</item>
-				</item>
-			</argument>
-		</selectionsColumn>
-		<column name="post_id">
+		<column name="category_id">
 			<argument name="data" xsi:type="array">
 				<item name="config" xsi:type="array">
 					<item name="filter" xsi:type="string">
@@ -133,26 +88,26 @@
 				</item>
 			</argument>
 		</column>
-		<column name="title">
+		<column name="name">
 			<argument name="data" xsi:type="array">
 				<item name="config" xsi:type="array">
 					<item name="filter" xsi:type="string">
 						text
 					</item>
 					<item name="label" xsi:type="string" translate="true">
-						Title
+						Name
 					</item>
 				</item>
 			</argument>
 		</column>
-		<column name="author">
+		<column name="description">
 			<argument name="data" xsi:type="array">
 				<item name="config" xsi:type="array">
 					<item name="filter" xsi:type="string">
 						text
 					</item>
 					<item name="label" xsi:type="string" translate="true">
-						Author
+						Description
 					</item>
 				</item>
 			</argument>
@@ -166,13 +121,13 @@
 					<item name="label" xsi:type="string" translate="true">
 						Status
 					</item>
-					<item name="options" xsi:type="string">
-						Tigren\Blog\Model\Post\Source\Status
+					<item name="dataType" xsi:type="string">
+						boolean
 					</item>
 				</item>
 			</argument>
 		</column>
-		<column name="published_at" class="Magento\Ui\Component\Listing\Columns\Date">
+		<column name="created_at" class="Magento\Ui\Component\Listing\Columns\Date">
 			<argument name="data" xsi:type="array">
 				<item name="config" xsi:type="array">
 					<item name="filter" xsi:type="string">
@@ -185,12 +140,30 @@
 						date
 					</item>
 					<item name="label" xsi:type="string" translate="true">
-						Published At
+						Created At
 					</item>
 				</item>
 			</argument>
 		</column>
-		<actionsColumn name="actions" class="Tigren\Blog\Ui\Component\Listing\Blog\Column\Action">
+		<column name="updated_at" class="Magento\Ui\Component\Listing\Columns\Date">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="filter" xsi:type="string">
+						dateRange
+					</item>
+					<item name="component" xsi:type="string">
+						Magento_Ui/js/grid/columns/date
+					</item>
+					<item name="dataType" xsi:type="string">
+						date
+					</item>
+					<item name="label" xsi:type="string" translate="true">
+						Modified At
+					</item>
+				</item>
+			</argument>
+		</column>
+		<actionsColumn name="actions" class="Tigren\Blog\Ui\Component\Listing\Cate\Column\Action">
 			<argument name="data" xsi:type="array">
 				<item name="config" xsi:type="array">
 					<item name="resizeEnabled" xsi:type="boolean">
@@ -200,7 +173,7 @@
 						107
 					</item>
 					<item name="indexField" xsi:type="string">
-						post_id
+						category_id
 					</item>
 				</item>
 			</argument>

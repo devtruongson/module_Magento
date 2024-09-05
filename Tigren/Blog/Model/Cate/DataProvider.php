@@ -5,13 +5,13 @@ use Tigren\Blog\Model\Cate\ResourceModel\Cate\CollectionFactory;
 
 class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
 {
-    
-	protected $collection;
+    protected $collection;
+
     /**
      * @param string $name
      * @param string $primaryFieldName
      * @param string $requestFieldName
-     * @param CollectionFactory $postCollectionFactory
+     * @param CollectionFactory $collectionFactory
      * @param array $meta
      * @param array $data
      */
@@ -26,7 +26,7 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
         $this->collection = $collectionFactory->create();
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
     }
- 
+
     /**
      * Get data
      *
@@ -35,15 +35,19 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
     public function getData()
     {
         $items = $this->collection->getItems();
-        $this->loadedData = array();
+        $this->loadedData = [];
 
-        /** @var Customer $customer */
-        foreach ($items as $blog) {
-            $this->loadedData[$blog->getId()] = $blog->getData();
+        foreach ($items as $cate) {
+            $this->loadedData[$cate->getId()] = $cate->getData();
         }
         return $this->loadedData;
     }
 
+    /**
+     * Get category options
+     *
+     * @return array
+     */
     public function getOptions()
     {
         $options = [];
@@ -54,6 +58,11 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
             ];
         }
         return $options;
+
+        return [
+            ['value' => '1', 'label' => __('Danh mục 1')],
+            ['value' => '2', 'label' => __('Danh mục 2')],
+        ];
     }
 
 }

@@ -2,7 +2,7 @@
 namespace Tigren\Blog\Model\Cate\ResourceModel;
 
 
-class Post extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
+class Cate extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 {
 	
 	public function __construct(

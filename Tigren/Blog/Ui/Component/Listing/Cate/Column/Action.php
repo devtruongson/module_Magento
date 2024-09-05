@@ -1,6 +1,5 @@
 <?php
-
-namespace Tigren\Blog\Ui\Component\Listing\Blog\Column;
+namespace Tigren\Blog\Ui\Component\Listing\Cate\Column;
 
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
@@ -10,7 +9,8 @@ use Magento\Framework\UrlInterface;
 class Action extends Column
 {
     /** Url path */
-    const ROW_EDIT_URL = 'tigrenblog/post/newpost';
+    const ROW_EDIT_URL = 'tigrenblog/cate/newcate';
+    const ROW_DELETE_URL = 'tigrenblog/cate/deletecate';
     /** @var UrlInterface */
     protected $_urlBuilder;
 
@@ -33,7 +33,7 @@ class Action extends Column
         UrlInterface $urlBuilder,
         array $components = [],
         array $data = [],
-        $editUrl = self::ROW_EDIT_URL
+        $editUrl = self::ROW_EDIT_URL,
     ) {
         $this->_urlBuilder = $urlBuilder;
         $this->_editUrl = $editUrl;
@@ -52,13 +52,20 @@ class Action extends Column
         if (isset($dataSource['data']['items'])) {
             foreach ($dataSource['data']['items'] as &$item) {
                 $name = $this->getData('name');
-                if (isset($item['post_id'])) {
+                if (isset($item['category_id'])) {
                     $item[$name]['edit'] = [
                         'href' => $this->_urlBuilder->getUrl(
                             $this->_editUrl,
-                            ['post_id' => $item['post_id']]
+                            ['category_id' => $item['category_id']]
                         ),
                         'label' => __('Edit'),
+                    ];
+                    $item[$name]['delete'] = [
+                        'href' => $this->_urlBuilder->getUrl(
+                            self::ROW_DELETE_URL,
+                            ['category_id' => $item['category_id']]
+                        ),
+                        'label' => __('Delete'),
                     ];
                 }
             }

@@ -3,5 +3,6 @@
     <menu>
         <add id="Tigren_Blog::tigrenblog" title="Tigren Blog And Cate" module="Tigren_Blog" sortOrder="51" resource="Tigren_Blog::tigrenblog"/>
         <add id="Tigren_Blog::post" title="Manage Blog" module="Tigren_Blog" sortOrder="10" action="tigrenblog/post/index" resource="Tigren_Blog::post" parent="Tigren_Blog::tigrenblog"/>
+        <add id="Tigren_Blog::cate" title="Manage Categories" module="Tigren_Blog" sortOrder="10" action="tigrenblog/cate/index" resource="Tigren_Blog::post" parent="Tigren_Blog::tigrenblog"/>
     </menu>
 </config>
