@@ -3,14 +3,15 @@
 $questions = $block->getQuestions();
 
 if (!empty($questions)):
-?>
+    ?>
     <div id="card-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
         <?php foreach ($questions as $question): ?>
             <div class="bg-white p-4 border border-gray-200 rounded-lg shadow-lg">
                 <h2 class="text-xl font-bold mb-2"><?= $question->getName(); ?></h2>
                 <a href="mailto:${item.email}" class="text-blue-500 hover:underline"><?= $question->getEmail(); ?></a>
                 <p class="mt-2 text-gray-600"><?= $question->getRating(); ?></p>
-                <img src="<?= $question->getProfileImage(); ?>" class="w-full h-48 object-cover mt-2 rounded-lg" alt="Profile Image">
+                <img src="<?= $question->getProfileImage(); ?>" class="w-full h-48 object-cover mt-2 rounded-lg"
+                    alt="Profile Image">
                 <p class="mt-2 text-sm ${item.status ? 'text-red-500' : 'text-green-500'}">
                     <?= $question->getStatus() ? 'Active' : 'Not Active'; ?>
                 </p>
@@ -21,6 +22,10 @@ if (!empty($questions)):
     <p>No questions found.</p>
 <?php endif; ?>
 <div class="flex jusify-center gap-6">
-    <a href="http://magento3.localhost.com/tigrenquestion/index" class="text-[20px] py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">Danh Sach Cau Hoi</a>
-    <a href="http://magento3.localhost.com/tigrenquestion/create/create" class="text-[20px] text-white hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 border border-gray-200 py-2.5 me-2 mb-2">Dat Cau Hoi</a>
+    <a href="http://magento3.localhost.com/tigrenquestion/index"
+        class="text-[20px] py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">Danh
+        Sach Cau Hoi</a>
+    <a href="http://magento3.localhost.com/tigrenquestion/create/create"
+        class="text-[20px] text-white hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 border border-gray-200 py-2.5 me-2 mb-2">Dat
+        Cau Hoi</a>
 </div>
