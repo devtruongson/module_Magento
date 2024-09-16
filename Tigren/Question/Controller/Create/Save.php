@@ -24,7 +24,7 @@ class Save extends Action
         IoFile $ioFile,
         DirectoryList $directoryList
     ) {
-        $this->postFactory = $postFactory; 
+        $this->postFactory = $postFactory;
         $this->customerSession = $customerSession;
         $this->ioFile = $ioFile;
         $this->directoryList = $directoryList;
@@ -50,6 +50,16 @@ class Save extends Action
                 $data['profile_image'] = $result['file'];
             }
 
+            // Lấy email khách hàng
+            $om = \Magento\Framework\App\ObjectManager::getInstance();
+            $customerSession = $om->get('Magento\Customer\Model\Session');
+            $customerEmail = $customerSession->getCustomer()->getEmail();
+            $customerName = $customerSession->getCustomer()->getName();
+
+            // Thêm email khách hàng vào dữ liệu
+            $data['customer_email'] = $customerEmail;
+            $data['name'] = $customerName;
+
             // Lưu dữ liệu testimonial
             $post = $this->postFactory->create(); // Sử dụng postFactory để tạo model
             $post->setData($data);
@@ -65,6 +75,7 @@ class Save extends Action
 
         return $this->_redirect('tigrenquestion');
     }
+
 }
 
 

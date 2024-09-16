@@ -64,7 +64,7 @@
 					png
 				</item>
 			</argument>
-			<argument name="allowedMimeTypes" xsi:type="array">
+			<argument name="allowedMime	Types" xsi:type="array">
 				<item name="jpg" xsi:type="string">
 					image/jpg
 				</item>

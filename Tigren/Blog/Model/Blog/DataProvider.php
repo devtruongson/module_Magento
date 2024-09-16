@@ -5,8 +5,10 @@ use Tigren\Blog\Model\Blog\ResourceModel\Post\CollectionFactory;
 
 class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
 {
-    
-	protected $collection;
+
+    protected $loadedData = [];
+
+    protected $collection;
     /**
      * @param string $name
      * @param string $primaryFieldName
@@ -26,7 +28,7 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
         $this->collection = $collectionFactory->create();
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
     }
- 
+
     /**
      * Get data
      *

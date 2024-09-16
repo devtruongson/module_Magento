@@ -1,9 +1,9 @@
-<?php 
+<?php
 
 namespace Tigren\Question\Block;
 
 use Magento\Framework\View\Element\Template;
-use Tigren\Question\Model\ResourceModel\Post\CollectionFactory;
+use Magento\Customer\Model\ResourceModel\Customer\CollectionFactory;
 
 class CustomerQuestions extends Template
 {
@@ -31,13 +31,17 @@ class CustomerQuestions extends Template
      */
     public function getQuestions()
     {
-        $collection = $this->collectionFactory->create();
-        $collection->addFieldToSelect('*'); // Select all fields
+        $om = \Magento\Framework\App\ObjectManager::getInstance();
+        $customerSession = $om->get('Magento\Customer\Model\Session');
+        $customerEmail = $customerSession->getCustomer()->getEmail();
 
-        return $collection->getItems(); // Use getItems() to return array of items
+        $collection = $this->collectionFactory->create();
+        $collection->addFieldToSelect('*'); // Chọn tất cả các trường
+
+        // Thêm điều kiện lọc theo email
+        $collection->addFieldToFilter('email', "fstack1.edu@gmail.com");
+
+        return $collection->getItems(); // Sử dụng getItems() để trả về mảng các mục
     }
 }
-
-
-
 ?>

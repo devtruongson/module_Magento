@@ -1,11 +1,11 @@
-<?php 
+<?php
 
 namespace Tigren\Blog\Block;
 
 use Magento\Framework\View\Element\Template;
-use Tigren\Blog\Model\Blog\ResourceModel\Post\CollectionFactory;
+use Tigren\Blog\Model\Cate\ResourceModel\Cate\CollectionFactory;
 
-class CustomerQuestions extends Template
+class CateBlock extends Template
 {
     /** @var CollectionFactory */
     protected $collectionFactory;
@@ -29,15 +29,14 @@ class CustomerQuestions extends Template
      *
      * @return \Tigren\Question\Model\ResourceModel\Post\Collection
      */
-    public function getQuestions()
+    public function getCates()
     {
         $collection = $this->collectionFactory->create();
         $collection->addFieldToSelect('*'); // Select all fields
+        $collection->addFieldToFilter('status', "true");
 
         return $collection->getItems(); // Use getItems() to return array of items
     }
 }
-
-
 
 ?>

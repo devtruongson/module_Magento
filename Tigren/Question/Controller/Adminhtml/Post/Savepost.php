@@ -11,8 +11,7 @@ class Savepost extends \Magento\Backend\App\Action
 		\Magento\Backend\App\Action\Context $context,
 		\Magento\Framework\View\Result\PageFactory $resultPageFactory,
 		\Tigren\Question\Model\PostFactory $postFactory
-	)
-	{
+	) {
 		$this->postFactory = $postFactory;
 		parent::__construct($context);
 		$this->resultPageFactory = $resultPageFactory;
@@ -21,28 +20,26 @@ class Savepost extends \Magento\Backend\App\Action
 	public function execute()
 	{
 		$data = $this->getRequest()->getPostValue();
-      /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
-        $resultRedirect = $this->resultRedirectFactory->create();
-        $id=$this->getRequest()->getParam('entity_id');
-        //echo $id; exit;
-	     try{
-	        /** @var \Magento\Cms\Model\Page $model */
-	           if(isset($id) && !empty($id)){
-	           	   $model = $this->postFactory->create()->load($id);
-				   $model->addData($data);
-				   $model->save();
-	           }else{
-	           	unset($data['entity_id']);
-		       $model = $this->postFactory->create();
-				   $model->setData($data);
-				   $model->save();
-			   }
-		    	$this->messageManager->addSuccessMessage(__('You saved the question.'));
-			}catch(\Exception $e){
-				 $this->messageManager->addExceptionMessage($e, __('Something went wrong while saving the question.'));
+		/** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
+		$resultRedirect = $this->resultRedirectFactory->create();
+		$id = $this->getRequest()->getParam('entity_id');
+		//echo $id; exit;
+		try {
+			/** @var \Magento\Cms\Model\Page $model */
+			if (isset($id) && !empty($id)) {
+				$model = $this->postFactory->create()->load($id);
+				$model->addData($data);
+				$model->save();
+			} else {
+				unset($data['entity_id']);
+				$model = $this->postFactory->create();
+				$model->setData($data);
+				$model->save();
 			}
-	 return $resultRedirect->setPath('*/*/');
+			$this->messageManager->addSuccessMessage(__('You saved the question.'));
+		} catch (\Exception $e) {
+			$this->messageManager->addExceptionMessage($e, __('Something went wrong while saving the question.'));
+		}
+		return $resultRedirect->setPath('*/*/');
 	}
-
-
 }

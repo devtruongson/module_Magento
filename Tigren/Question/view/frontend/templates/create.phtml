@@ -1,61 +1,65 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
-    #form_create_question_customer{
-        *{
+    #form_create_question_customer {
+        * {
             font-size: 16px;
         }
 
-        label{
+        label {
             margin-bottom: 10px;
             margin-top: 10px;
         }
 
     }
 </style>
-<form id="form_create_question_customer" action="<?php echo $block->getUrl('tigrenquestion/create/save'); ?>" method="post">
+<form id="form_create_question_customer" action="<?php echo $block->getUrl('tigrenquestion/create/save'); ?>"
+    method="post">
     <input type="hidden" name="form_key" value="<?php echo $block->getFormKey(); ?>">
 
     <div class="mb-8">
-        <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
-        <input placeholder="Vui long nhap name" type="text" id="name" name="name" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
-    </div>
-
-    <div class="mb-8">
-        <label for="email" class="block text-sm font-medium text-gray-700">Email address</label>
-        <input placeholder="Vui long nhap email" type="email" id="email" name="email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
-    </div>
-
-    <div class="mb-8">
         <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
-        <textarea placeholder="Vui long nhap message" id="message" name="message" rows="4" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required></textarea>
+        <textarea placeholder="Vui long nhap message" id="message" name="message" rows="4"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            required></textarea>
     </div>
 
     <div class="mb-8">
         <label for="company" class="block text-sm font-medium text-gray-700">Company</label>
-        <input placeholder="Vui long nhap company" type="text" id="company" name="company" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+        <input placeholder="Vui long nhap company" type="text" id="company" name="company"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
     </div>
 
     <div class="mb-8">
         <label for="rating" class="block text-sm font-medium text-gray-700">Rating</label>
-        <input placeholder="Vui long nhap rating" type="number" id="rating" name="rating" min="1" max="5" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+        <input placeholder="Vui long nhap rating" type="number" id="rating" name="rating" min="1" max="5"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            required>
     </div>
 
     <div class="mb-8">
         <label for="profile_image" class="block text-sm font-medium text-gray-700">Profile Image URL</label>
-        <input placeholder="Vui long nhap profile_image" type="url" id="profile_image" name="profile_image" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+        <input placeholder="Vui long nhap profile_image" type="url" id="profile_image" name="profile_image"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
     </div>
 
     <div class="mb-8">
         <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
-        <select id="status" name="status" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" required>
+        <select id="status" name="status"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            required>
             <option value="1">Enabled</option>
             <option value="0">Disabled</option>
         </select>
     </div>
 
-    <button type="submit" class="w-full bg-indigo-600 text-white py-6 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Submit</button>
+    <button type="submit"
+        class="w-full bg-indigo-600 text-white py-6 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Submit</button>
 </form>
 <div class="flex jusify-center gap-6 mt-10">
-    <a href="http://magento3.localhost.com/tigrenquestion/index" class="text-[20px] py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">Danh Sach Cau Hoi</a>
-    <a href="http://magento3.localhost.com/tigrenquestion/create/create" class="text-[20px] text-white hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 border border-gray-200 py-2.5 me-2 mb-2">Dat Cau Hoi</a>
+    <a href="http://magento3.localhost.com/tigrenquestion/index"
+        class="text-[20px] py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">Danh
+        Sach Cau Hoi</a>
+    <a href="http://magento3.localhost.com/tigrenquestion/create/create"
+        class="text-[20px] text-white hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 border border-gray-200 py-2.5 me-2 mb-2">Dat
+        Cau Hoi</a>
 </div>

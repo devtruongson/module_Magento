@@ -9,8 +9,7 @@ class Newpost extends \Magento\Backend\App\Action
 	public function __construct(
 		\Magento\Backend\App\Action\Context $context,
 		\Magento\Framework\View\Result\PageFactory $resultPageFactory
-	)
-	{
+	) {
 		parent::__construct($context);
 		$this->resultPageFactory = $resultPageFactory;
 	}
@@ -20,9 +19,9 @@ class Newpost extends \Magento\Backend\App\Action
 		$resultPage = $this->resultPageFactory->create();
 		$id = $this->getRequest()->getParam('entity_id');
 
-		if(!empty($id)){
+		if (!empty($id)) {
 			$resultPage->getConfig()->getTitle()->prepend((__('Add New Questions')));
-		}else{
+		} else {
 			$resultPage->getConfig()->getTitle()->prepend((__('Edit Questions')));
 		}
 

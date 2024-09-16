@@ -1,0 +1,33 @@
+<script src="https://cdn.tailwindcss.com"></script>
+<?php
+$post = $block->getPost();
+
+if (!empty($post)):
+    ?>
+    <h1 class="text-[30px] font-bold mb-4 pt-4">Chi tiết bài viết</h1>
+
+    <div id="card-container" class="">
+        <div class="bg-white p-4 border border-gray-200 rounded-lg shadow-lg">
+            <h2 class="text-xl font-bold mb-2">
+                <?= $post->getTitle(); ?>
+            </h2>
+            <h2 class="text-xl font-[600] mb-2">
+                <?= $post->getAuthor(); ?>
+            </h2>
+            <img src=" <?= $post->getPostImage(); ?>" class="w-full h-48 object-cover mt-2 rounded-lg" alt="Profile Image">
+            <p>
+            <p class="font-bold">Sort Content</p>
+            <?= $post->getShortContent() ?>
+            </p>
+            <p>
+            <p class="font-bold">Full Content</p>
+            <p style="white-space: pre-wrap;"> <?= $post->getFullContent() ?></p>
+            </p>
+            <span class="font-bold mt-6">
+                Tạo lúc: <?= $post->getPublishedAt() ?>
+            </span>
+        </div>
+    </div>
+<?php else: ?>
+    <p>No Cate found.</p>
+<?php endif; ?>

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
-	<router id="admin">
-		<route id="tigrenblog" frontName="tigrenblog">
+	<router id="standard">
+		<route id="tigrenblog_fe" frontName="tigrenblog_fe">
 			<module name="Tigren_Blog" />
 		</route>
 	</router>

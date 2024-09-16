@@ -5,6 +5,7 @@ use Tigren\Blog\Model\Cate\ResourceModel\Cate\CollectionFactory;
 
 class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
 {
+    protected $loadedData = [];
     protected $collection;
 
     /**

@@ -1,1 +1,21 @@
-<h1>Xin chao</h1>
+<script src="https://cdn.tailwindcss.com"></script>
+<?php
+$cates = $block->getCates();
+
+if (!empty($cates)):
+    ?>
+    <div id="card-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+        <?php foreach ($cates as $cate): ?>
+            <div class="bg-white p-4 border border-gray-200 rounded-lg shadow-lg">
+                <h2 class="text-xl font-bold mb-2">
+                    <a
+                        href="/tigrenblog_fe/DetailCate/index?category_id=<?= $cate->getCategoryId(); ?>"><?= $cate->getName(); ?></a>
+                </h2>
+                <img src="https://a.slack-edge.com/9c84081/marketing/img/solutions/tech/png/billboard.png"
+                    class="w-full h-48 object-cover mt-2 rounded-lg" alt="Profile Image">
+            </div>
+        <?php endforeach; ?>
+    </div>
+<?php else: ?>
+    <p>No Cate found.</p>
+<?php endif; ?>

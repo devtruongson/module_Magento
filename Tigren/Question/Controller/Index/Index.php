@@ -39,12 +39,17 @@ class Index extends Action
         $om = \Magento\Framework\App\ObjectManager::getInstance();
         $customerSession = $om->get('Magento\Customer\Model\Session');
         $customerData = $customerSession->getCustomer()->getData();
-        $customerId = $customerSession->getCustomer()->getEmail();
 
         if (count($customerData) === 0) {
-            echo "Đã login đâu";
+            $this->messageManager->addErrorMessage(__('Bạn cần login trước để xem câu hỏi'));
+            $redirect = $this->resultFactory->create(\Magento\Framework\Controller\ResultFactory::TYPE_REDIRECT);
+            $redirect->setUrl('/customer/account/login/referer');
+            return $redirect;
         } else {
-            echo json_encode($customerData);
+            $resultPage = $this->resultPageFactory->create();
+            $resultPage->getConfig()->getTitle()->prepend((__('Manage Question')));
+
+            return $resultPage;
         }
     }
 }
